@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View, Image } from 'react-native'
 import Card from './Card'
 import CardSection from './CardSection'
 
@@ -7,16 +7,49 @@ const AlbumDetail = ({ album }) => {
   return (
     <Card>
       <CardSection>
-        <Text>{album.title}</Text>
+        <View style={styles.thumbnailContainerStyle}>
+          <Image
+            source={{ uri: album.thumbnail_image }}
+            style={styles.thumbnailStyle} />
+        </View>
+        <View style={styles.headerContenStyle}>
+          <Text style={styles.headerTextStyle}>{album.title}</Text>
+          <Text>{album.artist}</Text>
+        </View>
       </CardSection>
       <CardSection>
-        <Text>{album.title}</Text>
-      </CardSection>
-      <CardSection>
-        <Text>{album.title}</Text>
+        <Image
+          source={{ uri: album.image }}
+          style={styles.imageStyle} />
       </CardSection>
     </Card>
   )
 }
+
+const styles = StyleSheet.create({
+  headerContenStyle: {
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  headerTextStyle: {
+    fontSize: 18
+  },
+  thumbnailStyle: {
+    height: 50,
+    width: 50
+  },
+  thumbnailContainerStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  imageStyle: {
+    height: 300,
+    flex: 1,
+    width: null
+  }
+})
+
 
 export default AlbumDetail
