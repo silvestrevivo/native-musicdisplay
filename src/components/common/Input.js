@@ -8,6 +8,7 @@ const Input = ({ label, value, onChangeText, placeholder }) => {
       <TextInput
         secureTextEntry={label === 'Password' ? true : false}
         autoCorrect={false}
+        autoCapitalize='none'
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}

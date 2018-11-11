@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Text, ScrollView } from 'react-native'
 import axios from 'axios'
 import AlbumDetail from './AlbumDetail'
+import { Button } from './common'
+import firebase from 'firebase'
 
 class AlbumList extends Component {
 
@@ -27,10 +29,15 @@ class AlbumList extends Component {
     })
   }
 
+  logOut = () => {
+    firebase.auth().signOut();
+  }
+
   render() {
     return (
       <ScrollView>
         {this.renderAlbums()}
+        <Button onPress={this.logOut}>Log Out</Button>
       </ScrollView>
     )
   }
